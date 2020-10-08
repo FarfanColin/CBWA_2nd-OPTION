@@ -57,6 +57,7 @@
           for (let i = 0; i < data.length; i++) {
             const author = data[i].name;
             const id = data[i].id;
+            const book = data[i].book;
             $('#author-list').append('<li> id: '+id+' - ' + author + '</li>');
           }
         });
