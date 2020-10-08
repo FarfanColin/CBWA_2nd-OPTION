@@ -58,7 +58,8 @@
             const author = data[i].name;
             const id = data[i].id;
             const book = data[i].book;
-            $('#author-list').append('<li> id: '+id+' - ' + author + '</li>');
+            console.log(data[i].name+ '<< data');
+            $('#author-list').append('<li>id: '+id+" - "+ author +" - Book: "+ book+ '</li>');
           }
         });
       }
