@@ -28,7 +28,7 @@ app.get('/authors', authorController.getController);
 // Add a author
 app.post('/authors', authorController.postController);
 
-app.get('/books/:id', booksController.getById);
+app.get('/authors/:id', booksController.getById);
 
 app.listen(port, hostname, () => {
 console.log(`Server running at http://${hostname}:${port}/`);
