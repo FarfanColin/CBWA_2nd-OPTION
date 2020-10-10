@@ -12,9 +12,9 @@ const app = module.exports = express();
 app.use('/',express.static('static'));
 // logging
 app.use((req, res, next) => {
-// Display log for requests
-console.log('[%s] %s -- %s', new Date(), req.method, req.url);
-next();
+  // Display log for requests
+  console.log('[%s] %s -- %s', new Date(), req.method, req.url);
+  next();
 });
 app.use(bodyParser.json())
 // Get all books
@@ -31,12 +31,15 @@ app.post('/authors', authorController.postController);
 app.get('/authors/:id', authorController.getById);
 
 app.listen(port, hostname, () => {
-console.log(`Server running at http://${hostname}:${port}/`);
-});
-// 404
-app.use((req, res) => {
-res.status(404).json({
- error: 404,
- message: 'Route not found',
- });
-});
+  console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(process.env.MONGO_URI)
+
+
+  });
+  // 404
+  app.use((req, res) => {
+    res.status(404).json({
+      error: 404,
+      message: 'Route not found',
+    });
+  });
