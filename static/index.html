@@ -58,7 +58,7 @@
           for (let i = 0; i < data.length; i++) {
             const author = data[i].name;
             const id = data[i].id;
-            //const book = data[i].book;
+            const book = data[i].book;
             console.log(data[i].name+ '<< data');
             $('#author-list').append('<li>id: '+id+" - "+ author +" - Book: "+ book+ '</li>');
           }
