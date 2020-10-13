@@ -20,7 +20,7 @@ module.exports = () => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-        collection.find(query).toArray((err, docs) => {
+        collection.find({}).toArray((err, docs) => {
           resolve(docs);
           client.close();
         });
