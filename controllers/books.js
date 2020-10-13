@@ -4,7 +4,7 @@ module.exports = () => {
     res.json(await books.get());
   }
   const getById = async (req, res) => {
-    res.json({ error: "byId not implemented yet"});
+    res.json(await books.get(parseInt(req.params.id)));
   }
   const postController = async (req, res) => {
     const name = req.body.name;
@@ -17,4 +17,4 @@ module.exports = () => {
     postController,
     getById
   }
-}
+}

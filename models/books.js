@@ -4,8 +4,8 @@ module.exports = () => {
   const get = async (id = null) => {
     console.log(' inside books model');
     if (!id) {
-      const authors = await db.get(COLLECTION);
-      return authors;
+      const books = await db.get(COLLECTION);
+      return books;
     }
     return { error: "byId not implemented yet" }
   }

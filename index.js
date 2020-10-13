@@ -28,13 +28,11 @@ app.get('/authors', authorController.getController);
 // Add a author
 app.post('/authors', authorController.postController);
 
-app.get('/authors/:id', authorController.getById);
+//app.get('/authors/:id', authorController.getById);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
     console.log(process.env.MONGO_URI)
-
-
   });
   // 404
   app.use((req, res) => {
