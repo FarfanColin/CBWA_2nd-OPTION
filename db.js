@@ -11,10 +11,10 @@ module.exports = () => {
         collection.countDocuments({}, (err, docs) => {
           resolve(docs);
           client.close();
-        })
-      })
-    })
-  }
+        });
+      });
+    });
+  };
   const get = (collectionName, query = {})=> {
     return new Promise((resolve, reject) => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
@@ -23,8 +23,8 @@ module.exports = () => {
         collection.find(query).toArray((err, docs) => {
           resolve(docs);
           client.close();
-        })
-      })
+        });
+      });
     });
   };
   const add = (collectionName, item) => {
@@ -35,8 +35,8 @@ module.exports = () => {
         collection.insertOne(item, (err, result) => {
           resolve(result);
           client.close();
-        })
-      })
+        });
+      });
     });
   };
 
