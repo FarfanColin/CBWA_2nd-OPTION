@@ -43,7 +43,7 @@
         console.log('Started')
 
         $.getJSON('http://localhost:3000/books', function(data) {
-          $('#book-list').html("");
+          //$('#book-list').html("");
           for (let i = 0; i < data.length; i++) {
             const book = data[i].name;
             const id = data[i].id;
@@ -51,18 +51,19 @@
             console.log(data[i].name+ '<< data');
             $('#book-list').append('<li>id: '+id+" - "+ book +" - Author: "+ author+ '</li>');
           }
+          console.log(data);
         });
         $.getJSON('http://localhost:3000/authors', function(data) {
-          $('#author-list').html("");
+          //$('#author-list').html("");
           for (let i = 0; i < data.length; i++) {
             const author = data[i].name;
             const id = data[i].id;
-            const book = data[i].book;
-            console.log(data[i].name+ '<< data');
+            //const book = data[i].book;
+            //console.log(data[i].name+ '<< data');
             $('#author-list').append('<li>id: '+id+" - "+ author +" - Book: "+ book+ '</li>');
           }
         });
-      }
+      };
 
       $( document ).ready(callback);
       console.log('Starting...')
