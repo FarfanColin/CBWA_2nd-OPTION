@@ -1,11 +1,23 @@
 const db = require('../db')();
 const COLLECTION = "authors";
+const LOOKUP_BOOKS_PIPELINE = [
+  {
+    $lookup: {
+      from: "books",
+      localField: "id",
+      foreignField: "author",
+      as: "books",
+    },
+  },
+];
+
 module.exports = () => {
   const get = async () => {
     console.log(' inside authors model');
     const authors = await db.get(COLLECTION);
     return authors;
   }
+
   const add = async (name) => {
     const authorCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {
@@ -13,9 +25,16 @@ module.exports = () => {
       name: name
     });
     return results.result;
-  }
+  };
+
+  const aggregateWithBooks = async () => {
+    const authors = await db.aggregate(COLLECTION, LOOKUP_BOOKS_PIPELINE);
+    return authors;
+  };
+
   return {
     get,
-    add
-  }
+    add,
+    aggregateWithBooks,
+  };
 };
