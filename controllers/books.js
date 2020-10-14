@@ -6,7 +6,7 @@ module.exports = () => {
   };
 
   const populatedController = async (reg, res) => {
-    res.json(await authors.aggregateWithAuthors());
+    res.json(await books.aggregateWithAuthors());
   };
 
   const getById = async (req, res) => {
