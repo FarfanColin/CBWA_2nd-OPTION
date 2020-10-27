@@ -28,7 +28,7 @@ app.use(async (req, res, next) => {
     code: "xxx", // Some useful error code
   };
 
-  const suppliedKey = req.headers["x-api-key"];
+  const supplied = req.headers["x-api-key"];
   const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
   // Check Pre-shared key
@@ -54,13 +54,14 @@ app.use(async (req, res, next) => {
   }
   next();
 });
+
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.json({
-    hello: "world",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     hello: "world",
+//   });
+// });
 // Get all books
 app.get("/books", booksController.getController);
 // Get all books with authors
@@ -87,4 +88,5 @@ app.listen(port, hostname, () => {
       error: 404,
       message: "Route not found",
     });
-  });
+  });
+

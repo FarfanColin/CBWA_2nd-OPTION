@@ -18,7 +18,7 @@ module.exports = () => {
     });
   };
 
-  const get = (collectionName, query = {})=> {
+  const get = (collectionName, query = {}) => {
     return new Promise((resolve, reject) => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
@@ -64,26 +64,10 @@ module.exports = () => {
     });
   };
 
-
-  // const authors = [
-  //   { id: 1, name: 'William Gibson' },
-  //   { id: 2, name: 'Neil Stephenson' }
-  // ];
-  // const books = [
-  //   { id: 1, name: 'Snow Crash', author: 2},
-  //   { id: 2, name: 'Cryptonomicon', author: 2},
-  //   { id: 3, name: 'Neuromancer', author: 1}
-  // ];
-
   return {
-    // books,
-    // authors,
     count,
     get,
     add,
     aggregate,
   };
 };
-
-
-// // module.exports = () => {

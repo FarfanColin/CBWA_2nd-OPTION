@@ -10,7 +10,7 @@ module.exports = () => {
   };
 
   const getById = async (req, res) => {
-    res.json({ error: "byId not implemented yet"});
+    res.json(await authors.get(parseInt(req.params.id)));
   };
 
   const postController = async (req, res) => {

@@ -29,7 +29,8 @@ module.exports = () => {
       return books;
     }
 
-    return { error: "byId not implemented yet" }
+    const book = await db.get(COLLECTION, { id });
+    return book;
   }
   const add = async (name, author) => {
     const bookCount = await db.count(COLLECTION);
