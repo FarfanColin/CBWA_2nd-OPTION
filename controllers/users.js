@@ -10,7 +10,7 @@ module.exports = () => {
   //};
 
   const getById = async (req, res) => {
-    res.json(await users.get(parseInt(req.params._id)));
+    res.json(await users.get((req.params.email)));
   };
 
   const postController = async (req, res) => {

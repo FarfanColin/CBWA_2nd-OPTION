@@ -15,14 +15,14 @@ module.exports = () => {
     return users[0];
   };
 
-  const get = async (id = null) => {
+  const get = async (email = null) => {
     console.log(' inside users model');
-    if (!id) {
+    if (!email) {
       const users = await db.get(COLLECTION);
       return users;
     };
 
-    const user = await db.get(COLLECTION, { id });
+    const user = await db.get(COLLECTION, { email });
     return user;
   };
 

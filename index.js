@@ -67,7 +67,7 @@ app.get("/issues/populated", issuesController.populatedController);
 // Add a issue
 app.post("/issues", issuesController.postController);
 // A issue
-app.get("/issues/:id", issuesController.getById);
+app.get("/issues/:issueNumber", issuesController.getById);
 // Get all projects
 app.get("/projects", projectController.getController);
 // Get all projects with issues
@@ -75,13 +75,13 @@ app.get("/projects/populated", projectController.populatedController);
 // Add a project
 app.post("/projects", projectController.postController);
 // An Project
-app.get("/projects/:id", projectController.getById);
+app.get("/projects/:slug", projectController.getById);
 // Get all users
 app.get("/users", usersController.getController);
 // Add a user
 app.post("/users", usersController.postController);
 // A user
-app.get("/users/:id", usersController.getById);
+app.get("/users/:email", usersController.getById);
 // Get all comments
 app.get("/comments", commentsController.getController);
 // Get all comments with issues

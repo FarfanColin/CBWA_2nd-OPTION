@@ -5,8 +5,8 @@ const LOOKUP_PROJECTS_PIPELINE = [
     $lookup: {
       from: "projects",
       localField: "id",
-      foreignField: "description",
-      as: "pon algo",
+      foreignField: "id",
+      as: "a",
     },
   },
   {
@@ -21,22 +21,24 @@ const LOOKUP_PROJECTS_PIPELINE = [
 ];
 
 module.exports = () => {
-  const get = async (id = null) => {
+  const get = async (issueNumber = null) => {
     console.log(' inside issues model');
-    if (!id) {
+    if (!issueNumber) {
       const issues = await db.get(COLLECTION);
       return issues;
     }
 
-    const issue = await db.get(COLLECTION, { id });
+    const issue = await db.get(COLLECTION, { issueNumber });
     return issue;
   }
-  const add = async (name, project) => {
+  const add = async (issueNumber, title, description, status) => {
     const issueCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {
       id: issueCount + 1,
-      name: name,
-      project: project
+      issueNumber: issueNumber,
+      title: title,
+      description: description,
+      status: status,
     });
 
     return results.result;

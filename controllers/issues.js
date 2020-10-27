@@ -9,14 +9,16 @@ module.exports = () => {
     res.json(await issues.aggregateWithProjects());
   };
 
-  const getById = async (req, res) => {
-    res.json(await issues.get(parseInt(req.params.id)));
+  const getById= async (req, res) => {
+    res.json(await issues.get(req.params.issueNumber));
   };
 
   const postController = async (req, res) => {
+    const issueNumber = req.body.issueNumber;
     const title = req.body.title;
-    const project = req.body.project;
-    const result = await issues.add(title, project);
+    const description = req.body.description;
+    const status = req.body.status;
+    const result = await issues.add(issueNumber, title, description, status);
     res.json(result);
   };
 
