@@ -5,8 +5,8 @@ const LOOKUP_ISSUES_PIPELINE = [
     $lookup: {
       from: "issues",
       localField: "id",
-      foreignField: "project",
-      as: "issues",
+      foreignField: "id",
+      as: "field",
     },
   },
 ];
@@ -22,11 +22,13 @@ module.exports = () => {
     const project = await db.get(COLLECTION, { id });
     return project;
   };
-  const add = async (name) => {
+  const add = async (slug, name, description) => {
     const projectCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {
       id: projectCount + 1,
-      name: name
+      slug: slug,
+      name: name,
+      dscription: description,
     });
     return results.result;
   };

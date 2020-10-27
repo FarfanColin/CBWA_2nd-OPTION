@@ -10,12 +10,14 @@ module.exports = () => {
   //};
 
   const getById = async (req, res) => {
-    res.json(await users.get(parseInt(req.params.id)));
+    res.json(await users.get(parseInt(req.params._id)));
   };
 
   const postController = async (req, res) => {
     const name = req.body.name;
-    const result = await users.add(name);
+    const email = req.body.email;
+    const key = req.body.key;
+    const result = await users.add(name, email, key);
     res.json(result);
   };
 

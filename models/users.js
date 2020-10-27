@@ -26,11 +26,13 @@ module.exports = () => {
     return user;
   };
 
-  const add = async (name) => {
+  const add = async (name, email, key) => {
     const userCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {
       id: userCount + 1,
-      name: name
+      name: name,
+      email: email,
+      key: key
     });
     return results.result;
   };

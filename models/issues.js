@@ -4,9 +4,9 @@ const LOOKUP_PROJECTS_PIPELINE = [
   {
     $lookup: {
       from: "projects",
-      localField: "project",
-      foreignField: "id",
-      as: "a",
+      localField: "id",
+      foreignField: "description",
+      as: "pon algo",
     },
   },
   {
