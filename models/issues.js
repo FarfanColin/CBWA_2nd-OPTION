@@ -1,6 +1,5 @@
 const db = require('../db')();
 const COLLECTION = "issues";
-
 const LOOKUP_PROJECTS_PIPELINE = [
   {
     $lookup: {

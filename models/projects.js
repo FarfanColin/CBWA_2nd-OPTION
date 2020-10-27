@@ -14,14 +14,14 @@ const LOOKUP_ISSUES_PIPELINE = [
 module.exports = () => {
   const get = async (id = null) => {
     console.log(' inside projects model');
-    if (!id) { 
-    const projects = await db.get(COLLECTION);
-    return projects;
-  };
+    if (!id) {
+      const projects = await db.get(COLLECTION);
+      return projects;
+    };
 
-  const project = await db.get(COLLECTION, { id });
-  return project;
-};
+    const project = await db.get(COLLECTION, { id });
+    return project;
+  };
   const add = async (name) => {
     const projectCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {

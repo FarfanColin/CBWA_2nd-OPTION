@@ -6,6 +6,8 @@ const port = process.env.PORT || 3000;
 
 const projectController = require("./controllers/projects")();
 const issuesController = require("./controllers/issues")();
+const usersController = require("./controllers/users")();
+const commentsController = require("./controllers/comments")();
 
 
 const users = require("./models/users")();
@@ -58,11 +60,6 @@ app.use(async (req, res, next) => {
 
 app.use(bodyParser.json());
 
-// app.get("/", (req, res) => {
-//   res.json({
-//     hello: "world",
-//   });
-// });
 // Get all issues
 app.get("/issues", issuesController.getController);
 // Get all issues with projects
@@ -79,6 +76,20 @@ app.get("/projects/populated", projectController.populatedController);
 app.post("/projects", projectController.postController);
 // An Project
 app.get("/projects/:id", projectController.getById);
+// Get all users
+app.get("/users", usersController.getController);
+// Add a user
+app.post("/users", usersController.postController);
+// A user
+app.get("/users/:id", usersController.getById);
+// Get all comments
+app.get("/comments", commentsController.getController);
+// Get all comments with issues
+app.get("/comments/populated", commentsController.populatedController);
+// Add a comment
+app.post("/comments", commentsController.postController);
+// A comment
+app.get("/comments/:id", commentsController.getById);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
