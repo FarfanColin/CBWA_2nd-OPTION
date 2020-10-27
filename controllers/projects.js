@@ -1,22 +1,21 @@
-const books = require('../models/books.js')();
+const projects = require('../models/projects.js')();
 
 module.exports = () => {
   const getController = async (req, res) => {
-    res.json(await books.get());
+    res.json(await projects.get());
   };
 
   const populatedController = async (reg, res) => {
-    res.json(await books.aggregateWithAuthors());
+    res.json(await projects.aggregateWithIssues());
   };
 
   const getById = async (req, res) => {
-    res.json(await books.get(parseInt(req.params.id)));
+    res.json(await projects.get(parseInt(req.params.id)));
   };
 
   const postController = async (req, res) => {
     const name = req.body.name;
-    const author = req.body.author;
-    const result = await books.add(name, author);
+    const result = await projects.add(name);
     res.json(result);
   };
 

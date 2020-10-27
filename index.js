@@ -4,8 +4,9 @@ const bodyParser = require("body-parser");
 const hostname = "0.0.0.0";
 const port = process.env.PORT || 3000;
 
-const authorController = require("./controllers/authors")();
-const booksController = require("./controllers/books")();
+const projectController = require("./controllers/projects")();
+const issuesController = require("./controllers/issues")();
+
 
 const users = require("./models/users")();
 
@@ -28,7 +29,7 @@ app.use(async (req, res, next) => {
     code: "xxx", // Some useful error code
   };
 
-  const supplied = req.headers["x-api-key"];
+  const suppliedKey = req.headers["x-api-key"];
   const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
   // Check Pre-shared key
@@ -62,22 +63,22 @@ app.use(bodyParser.json());
 //     hello: "world",
 //   });
 // });
-// Get all books
-app.get("/books", booksController.getController);
-// Get all books with authors
-app.get("/books/populated", booksController.populatedController);
-// Add a book
-app.post("/books", booksController.postController);
-// A book
-app.get("/books/:id", booksController.getById);
-// Get all authors
-app.get("/authors", authorController.getController);
-// Get all authors with books
-app.get("/authors/populated", authorController.populatedController);
-// Add a author
-app.post("/authors", authorController.postController);
-// An Author
-app.get("/authors/:id", authorController.getById);
+// Get all issues
+app.get("/issues", issuesController.getController);
+// Get all issues with projects
+app.get("/issues/populated", issuesController.populatedController);
+// Add a issue
+app.post("/issues", issuesController.postController);
+// A issue
+app.get("/issues/:id", issuesController.getById);
+// Get all projects
+app.get("/projects", projectController.getController);
+// Get all projects with issues
+app.get("/projects/populated", projectController.populatedController);
+// Add a project
+app.post("/projects", projectController.postController);
+// An Project
+app.get("/projects/:id", projectController.getById);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

@@ -1,6 +1,6 @@
 const uri = process.env.MONGO_URI;
 const MongoClient = require('mongodb').MongoClient;
-const DB_NAME = "book-store";
+const DB_NAME = "CA1";
 const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true };
 
 module.exports = () => {
