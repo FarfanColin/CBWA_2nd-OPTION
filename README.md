@@ -6,3 +6,5 @@
 #### 11:59 pm Saturday 31 October 2020
 ---------------------
 ## 2nd OPTION
+------
+Run it with **npm** **start**
