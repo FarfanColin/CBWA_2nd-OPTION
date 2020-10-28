@@ -61,9 +61,12 @@ app.use(async (req, res, next) => {
 app.use(bodyParser.json());
 
 // Get all issues
-app.get("/issues", issuesController.getController);
+//app.get("/issues", issuesController.getController);
 // Get all issues with projects
-app.get("/issues/populated", issuesController.populatedController);
+app.get("/issues", issuesController.populatedController);
+
+app.get("/projects/:slug/:issues", issuesController.getIssuesPerProject);
+
 // Add a issue
 app.post("/issues", issuesController.postController);
 // A issue
@@ -82,14 +85,12 @@ app.get("/users", usersController.getController);
 app.post("/users", usersController.postController);
 // A user
 app.get("/users/:email", usersController.getById);
-// Get all comments
-app.get("/comments", commentsController.getController);
 // Get all comments with issues
-app.get("/comments/populated", commentsController.populatedController);
+app.get("/comments", commentsController.populatedController);
 // Add a comment
 app.post("/comments", commentsController.postController);
 // A comment
-app.get("/comments/:id", commentsController.getById);
+app.get("/issues/:issueNumber/:comments", commentsController.getById);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

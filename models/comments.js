@@ -4,31 +4,22 @@ const LOOKUP_ISSUES_PIPELINE = [
   {
     $lookup: {
       from: "issues",
-      localField: "issue",
+      localField: "id",
       foreignField: "id",
       as: "a",
-    },
-  },
-  {
-    $project: {
-      id: 1,
-      name: 1,
-      issue: {
-        $arrayElemAt: ["$a", 0],
-      },
     },
   },
 ];
 
 module.exports = () => {
-  const get = async (id = null) => {
+  const get = async (issueNumber = null) => {
     console.log(' inside comments model');
-    if (!id) {
+    if (!issueNumber) {
       const comments = await db.get(COLLECTION);
       return comments;
     }
 
-    const comments = await db.get(COLLECTION, { id });
+    const comments = await db.get(COLLECTION, { issueNumber });
     return comments;
   }
   const add = async (text, issue) => {
@@ -36,7 +27,7 @@ module.exports = () => {
     const results = await db.add(COLLECTION, {
       id: commentCount + 1,
       text: text,
-      issue: issue
+      issue: issue,
     });
 
     return results.result;

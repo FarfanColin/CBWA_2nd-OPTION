@@ -1,4 +1,5 @@
 const comments = require('../models/comments.js')();
+const issues = require('../models/issues.js')();
 
 module.exports = () => {
   const getController = async (req, res) => {
@@ -10,7 +11,7 @@ module.exports = () => {
   };
 
   const getById = async (req, res) => {
-    res.json(await comments.get(parseInt(req.params.id)));
+    res.json(await issues.get(req.params.issueNumber));
   };
 
   const postController = async (req, res) => {

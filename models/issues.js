@@ -3,21 +3,21 @@ const COLLECTION = "issues";
 const LOOKUP_PROJECTS_PIPELINE = [
   {
     $lookup: {
-      from: "projects",
+      from: "comments",
       localField: "id",
       foreignField: "id",
-      as: "a",
+      as: "field",
     },
   },
-  {
-    $project: {
-      id: 1,
-      name: 1,
-      project: {
-        $arrayElemAt: ["$a", 0],
-      },
-    },
-  },
+  // {
+  //   $project: {
+  //     id: 1,
+  //     name: 1,
+  //     project: {
+  //       $arrayElemAt: ["$a", 0],
+  //     },
+  //   },
+  // },
 ];
 
 module.exports = () => {
