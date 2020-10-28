@@ -9,28 +9,20 @@ const LOOKUP_PROJECTS_PIPELINE = [
       as: "field",
     },
   },
-  // {
-  //   $project: {
-  //     id: 1,
-  //     name: 1,
-  //     project: {
-  //       $arrayElemAt: ["$a", 0],
-  //     },
-  //   },
-  // },
 ];
 
 module.exports = () => {
+
   const get = async (issueNumber = null) => {
     console.log(' inside issues model');
     if (!issueNumber) {
       const issues = await db.get(COLLECTION);
       return issues;
     }
-
     const issue = await db.get(COLLECTION, { issueNumber });
     return issue;
   }
+
   const add = async (issueNumber, title, description, status) => {
     const issueCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {
@@ -40,9 +32,9 @@ module.exports = () => {
       description: description,
       status: status,
     });
-
     return results.result;
   };
+
   const aggregateWithProjects = async () => {
     const issues = await db.aggregate(COLLECTION, LOOKUP_PROJECTS_PIPELINE);
     return issues;
@@ -53,4 +45,5 @@ module.exports = () => {
     add,
     aggregateWithProjects,
   };
+
 };

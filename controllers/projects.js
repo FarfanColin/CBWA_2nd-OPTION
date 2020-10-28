@@ -1,6 +1,7 @@
 const projects = require('../models/projects.js')();
 
 module.exports = () => {
+
   const getController = async (req, res) => {
     res.json(await projects.get());
   };
@@ -9,7 +10,7 @@ module.exports = () => {
     res.json(await projects.aggregateWithIssues());
   };
 
-  const getById = async (req, res) => {
+  const getByProject = async (req, res) => {
     res.json(await projects.get(req.params.slug));
   };
 
@@ -24,7 +25,8 @@ module.exports = () => {
   return {
     getController,
     postController,
-    getById,
+    getByProject,
     populatedController,
   };
+
 };

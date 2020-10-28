@@ -2,6 +2,7 @@ const comments = require('../models/comments.js')();
 const issues = require('../models/issues.js')();
 
 module.exports = () => {
+  
   const getController = async (req, res) => {
     res.json(await comments.get());
   };
@@ -10,7 +11,7 @@ module.exports = () => {
     res.json(await comments.aggregateWithIssues());
   };
 
-  const getById = async (req, res) => {
+  const getByIssue = async (req, res) => {
     res.json(await issues.get(req.params.issueNumber));
   };
 
@@ -24,7 +25,8 @@ module.exports = () => {
   return {
     getController,
     postController,
-    getById,
+    getByIssue,
     populatedController,
   };
+
 };

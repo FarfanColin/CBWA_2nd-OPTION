@@ -4,12 +4,12 @@ const DB_NAME = "CA1";
 const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true };
 
 module.exports = () => {
+  
   const count = (collectionName) => {
     return new Promise((resolve, reject) => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-
         collection.countDocuments({}, (err, docs) => {
           resolve(docs);
           client.close();
@@ -23,7 +23,6 @@ module.exports = () => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-
         collection.find(query).toArray((err, docs) => {
           resolve(docs);
           client.close();
@@ -37,7 +36,6 @@ module.exports = () => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-
         collection.insertOne(item, (err, result) => {
           resolve(result);
           client.close();
@@ -51,7 +49,6 @@ module.exports = () => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-
         collection.aggregate(pipeline).toArray((err, docs) => {
           if (err) {
             console.log(" ---aggregate ERROR ---");
@@ -70,4 +67,5 @@ module.exports = () => {
     add,
     aggregate,
   };
+
 };

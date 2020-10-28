@@ -12,16 +12,17 @@ const LOOKUP_ISSUES_PIPELINE = [
 ];
 
 module.exports = () => {
+
   const get = async (issueNumber = null) => {
     console.log(' inside comments model');
     if (!issueNumber) {
       const comments = await db.get(COLLECTION);
       return comments;
     }
-
     const comments = await db.get(COLLECTION, { issueNumber });
     return comments;
   }
+
   const add = async (text, issue) => {
     const commentCount = await db.count(COLLECTION);
     const results = await db.add(COLLECTION, {
@@ -29,9 +30,9 @@ module.exports = () => {
       text: text,
       issue: issue,
     });
-
     return results.result;
   };
+  
   const aggregateWithIssues = async () => {
     const comments = await db.aggregate(COLLECTION, LOOKUP_ISSUES_PIPELINE);
     return comments;
@@ -42,4 +43,5 @@ module.exports = () => {
     add,
     aggregateWithIssues,
   };
+
 };
