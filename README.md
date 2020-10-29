@@ -9,4 +9,4 @@
 ------
 Run it with **npm** **start**
 --
-Open with password
+PASSWORD REQUIRED
