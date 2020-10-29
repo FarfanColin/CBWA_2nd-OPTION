@@ -8,3 +8,4 @@
 ## 2nd OPTION
 ------
 Run it with **npm** **start**
+Open with password
