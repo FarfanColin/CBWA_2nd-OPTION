@@ -42,15 +42,21 @@ app.use(async (req, res, next) => {
     return res.status(401).json(FailedAuthMessage);
   }
 
-  const user = await users.getByKey(suppliedKey);
-  if (!user) {
-    console.log(
-      " [%s] FAILED AUTHENTICATION -- %s, BAD Key Supplied",
-      new Date(),
-      clientIp
-    );
-    FailedAuthMessage.code = "02";
-    return res.status(401).json(FailedAuthMessage);
+  try {
+    const user = await users.getByKey(suppliedKey);
+    if (!user) {
+      console.log(
+        " [%s] FAILED AUTHENTICATION -- %s, BAD Key Supplied",
+        new Date(),
+        clientIp
+      );
+      FailedAuthMessage.code = "02";
+      return res.status(401).json(FailedAuthMessage);
+    }
+  }
+  catch (ex) {
+    console.log("======= Exception wrong::key")
+    return null
   }
   next();
 });

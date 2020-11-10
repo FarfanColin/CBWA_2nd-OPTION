@@ -3,23 +3,51 @@ const projects = require('../models/projects.js')();
 module.exports = () => {
 
   const getController = async (req, res) => {
-    res.json(await projects.get());
+    try {
+      res.json(await projects.get());
+    }
+    catch (ex) {
+      console.log("======Exception get::controller")
+      console.log(ex)
+      return null
+    }
   };
 
   const populatedController = async (reg, res) => {
-    res.json(await projects.aggregateWithIssues());
+    try {
+      res.json(await projects.aggregateWithIssues());
+    }
+    catch (ex) {
+      console.log("======Exception populated::controller")
+      console.log(ex)
+      return null
+    }
   };
 
   const getByProject = async (req, res) => {
-    res.json(await projects.get(req.params.slug));
+    try {
+      res.json(await projects.get(req.params.slug));
+    }
+    catch (ex) {
+      console.log("======Exception get::ByProject")
+      console.log(ex)
+      return null
+    }
   };
 
   const postController = async (req, res) => {
-    const slug = req.body.slug;
-    const name = req.body.name;
-    const description = req.body.description;
-    const result = await projects.add(slug, name, description);
-    res.json(result);
+    try {
+      const slug = req.body.slug;
+      const name = req.body.name;
+      const description = req.body.description;
+      const result = await projects.add(slug, name, description);
+      res.json(result);
+    }
+    catch (ex) {
+      console.log("======Exception post::controller")
+      console.log(ex)
+      return null
+    }
   };
 
   return {
