@@ -29,34 +29,34 @@
     <h1 style="text-align:center;"><B>WELCOME TO MY PROJECT!</B></h1>
   </div>
 
-  <form name="signUpForm" action="/SignUp" method="post">
+  <form name="signUpForm" action="/users" method="POST">
     <div class="form-row">
       <div class="col-md-6 mb-3">
-        <label for="validationDefault01">First name</label>
-        <input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
+        <label for="validationDefault01">Name</label>
+        <input type="text" class="form-control" name="name" id="validationDefault01" placeholder="name" required>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="validationDefaultUsername">Username</label>
+        <label for="validationDefaultUsername">Email</label>
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend2">@</span>
           </div>
-          <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username"
+          <input type="text" class="form-control" name="email" id="validationDefaultUsername" placeholder="email"
             aria-describedby="inputGroupPrepend2" required>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-6 mb-3">
-        <label for="validationDefault03">City</label>
-        <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+        <label for="validationDefault03">Key</label>
+        <input type="text" class="form-control" name ="key" id="validationDefault03" placeholder="key" required>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="validationDefault03">City</label>
-        <input type="text" class="form-control" id="validationDefault04" placeholder="City" required>
+        <label for="validationDefault04">Usertype</label>
+        <input type="text" class="form-control" name = "usertype" id="validationDefault04" placeholder="usertype" required>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn btn-primary" type="submit">Sign in</button>
   </form>
 </body>
 

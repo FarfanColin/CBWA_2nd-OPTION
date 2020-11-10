@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.1",
     "mongodb": "^3.6.2",
+    "mongoose": "^5.10.13",
     "save": "^2.4.0"
   },
   "nodemonConfig": {

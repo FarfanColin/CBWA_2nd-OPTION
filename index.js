@@ -21,47 +21,48 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(async (req, res, next) => {
-  const FailedAuthMessage = {
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
-    error: "Failed Authentication",
-    message: "Go away!",
-    code: "xxx", // Some useful error code
-  };
+// app.use(async (req, res, next) => {
+//   const FailedAuthMessage = {
+//     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+//     error: "Failed Authentication",
+//     message: "Go away!",
+//     code: "xxx", // Some useful error code
+//   };
 
-  const suppliedKey = req.headers["x-api-key"];
-  const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+//   const suppliedKey = req.headers["x-api-key"];
+//   const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
-  if (!suppliedKey) {
-    console.log(
-      " [%s] FAILED AUTHENTICATION -- %s, No Key Supplied",
-      new Date(),
-      clientIp
-    );
-    FailedAuthMessage.code = "01";
-    return res.status(401).json(FailedAuthMessage);
-  }
+//   if (!suppliedKey) {
+//     console.log(
+//       " [%s] FAILED AUTHENTICATION -- %s, No Key Supplied",
+//       new Date(),
+//       clientIp
+//     );
+//     FailedAuthMessage.code = "01";
+//     return res.status(401).json(FailedAuthMessage);
+//   }
 
-  try {
-    const user = await users.getByKey(suppliedKey);
-    if (!user) {
-      console.log(
-        " [%s] FAILED AUTHENTICATION -- %s, BAD Key Supplied",
-        new Date(),
-        clientIp
-      );
-      FailedAuthMessage.code = "02";
-      return res.status(401).json(FailedAuthMessage);
-    }
-  }
-  catch (ex) {
-    console.log("======= Exception wrong::key")
-    return null
-  }
-  next();
-});
+//   try {
+//     const user = await users.getByKey(suppliedKey);
+//     if (!user) {
+//       console.log(
+//         " [%s] FAILED AUTHENTICATION -- %s, BAD Key Supplied",
+//         new Date(),
+//         clientIp
+//       );
+//       FailedAuthMessage.code = "02";
+//       return res.status(401).json(FailedAuthMessage);
+//     }
+//   }
+//   catch (ex) {
+//     console.log("======= Exception wrong::key")
+//     return null
+//   }
+//   next();
+// });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 // P R O J E C T S //
 
