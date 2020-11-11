@@ -1,8 +1,93 @@
-<h1>DEVICES</h1>
+<!doctype html>
+<html lang="en">
 
-<ul>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Cloud-based Web Applications</title>
+
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <div class="container">
+    <h1 style="text-align:center;"><B>USERS</B></h1>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+    <a class="navbar-brand" href="/">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/comments">COMMENTS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/issues">ISSUES</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/projects">PROJECTS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/users">USERS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+  <form name="signUpForm" action="/users" method="POST">
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault01">Name</label>
+        <input type="text" class="form-control" name="name" id="validationDefault01" placeholder="name" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationDefaultUsername">Email</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+          </div>
+          <input type="text" class="form-control" name="email" id="validationDefaultUsername" placeholder="email" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault03">Key</label>
+        <input type="text" class="form-control" name ="key" id="validationDefault03" placeholder="key" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault04">Usertype</label>
+        <input type="text" class="form-control" name = "usertype" id="validationDefault04" placeholder="usertype" required>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <button class="btn btn-primary" type="submit">NEW USER</button>
+    </div>
+  </form>
+
+  <ul>
     <% users.forEach(function(user){ %>
-        <strong><li><%=user.name %></strong>
+        <strong><li><%=user.name %></a></strong>
         <ul>
             <% Object.keys(user).forEach(function(key){ %>
             <li><strong><%= key %></strong>:<%= user[key] %></li>
@@ -11,3 +96,6 @@
     </li>
     <% }); %>
   </ul>
+</body>
+
+</html>

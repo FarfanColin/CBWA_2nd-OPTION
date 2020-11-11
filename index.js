@@ -11,21 +11,10 @@ const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true };
 const assert = require('assert');
 const client = new MongoClient(uri);
 
-//const MongoClient = require('mongodb').MongoClient;
-// // Connection URL
-// const url = 'mongodb://localhost:27017';
-
-// // Database Name
-// const dbName = 'myproject';
-
-// // Create a new MongoClient
-// const client = new MongoClient(url);
-
 const projectController = require("./controllers/projects")();
 const issuesController = require("./controllers/issues")();
 const usersController = require("./controllers/users")();
 const commentsController = require("./controllers/comments")();
-
 
 const users = require("./models/users")();
 
@@ -35,6 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  res.render('index')
+})
 
 app.get('/users', (req, res) => {
   const db = client.db(DB_NAME);
@@ -46,7 +39,35 @@ app.get('/users', (req, res) => {
   });
 })
 
+app.get('/issues', (req, res) => {
+  const db = client.db(DB_NAME);
+  const collection = db.collection('issues');
+  // Find some documents
+  collection.find({}).toArray(function (err, issues) {
+    assert.equal(err, null);
+    res.render('issues', { 'issues': issues })
+  });
+})
 
+app.get('/comments', (req, res) => {
+  const db = client.db(DB_NAME);
+  const collection = db.collection('comments');
+  // Find some documents
+  collection.find({}).toArray(function (err, comments) {
+    assert.equal(err, null);
+    res.render('comments', { 'comments': comments })
+  });
+})
+
+app.get('/projects', (req, res) => {
+  const db = client.db(DB_NAME);
+  const collection = db.collection('projects');
+  // Find some documents
+  collection.find({}).toArray(function (err, projects) {
+    assert.equal(err, null);
+    res.render('projects', { 'projects': projects })
+  });
+})
 
 // Use connect method to connect to the Server
 client.connect(function (err) {
@@ -55,13 +76,6 @@ client.connect(function (err) {
 
   const db = client.db(DB_NAME);
 });
-
-
-
-
-app.get('/', (req, res) => {
-  res.render('index')
-})
 
 app.use((req, res, next) => {
   console.log("[%s] %s -- %s", new Date(), req.method, req.url);

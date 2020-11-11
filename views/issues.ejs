@@ -26,10 +26,14 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <div class="container">
-    <h1 style="text-align:center;"><B>WELCOME TO MY PROJECT!</B></h1>
+    <h1 style="text-align:center;"><B>ISSUES</B></h1>
   </div>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+    <a class="navbar-brand" href="/">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <a class="navbar-brand" href="/comments">COMMENTS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,6 +53,18 @@
   </nav>
 
   <hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+  <ul>
+    <% issues.forEach(function(issue){ %>
+        <strong><li><%=issue.title %></strong>
+        <ul>
+            <% Object.keys(issue).forEach(function(key){ %>
+            <li><strong><%= key %></strong>:<%= issue[key] %></li>
+        <% }); %>
+        </ul>
+    </li>
+    <% }); %>
+  </ul>
 </body>
 
 </html>
