@@ -1,0 +1,13 @@
+<h1>DEVICES</h1>
+
+<ul>
+    <% users.forEach(function(user){ %>
+        <strong><li><%=user.name %></strong>
+        <ul>
+            <% Object.keys(user).forEach(function(key){ %>
+            <li><strong><%= key %></strong>:<%= user[key] %></li>
+        <% }); %>
+        </ul>
+    </li>
+    <% }); %>
+  </ul>

@@ -4,6 +4,23 @@ const bodyParser = require("body-parser");
 const hostname = "0.0.0.0";
 const port = process.env.PORT || 3000;
 
+const uri = process.env.MONGO_URI;
+const MongoClient = require('mongodb').MongoClient;
+const DB_NAME = "CA1";
+const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true };
+const assert = require('assert');
+const client = new MongoClient(uri);
+
+//const MongoClient = require('mongodb').MongoClient;
+// // Connection URL
+// const url = 'mongodb://localhost:27017';
+
+// // Database Name
+// const dbName = 'myproject';
+
+// // Create a new MongoClient
+// const client = new MongoClient(url);
+
 const projectController = require("./controllers/projects")();
 const issuesController = require("./controllers/issues")();
 const usersController = require("./controllers/users")();
@@ -14,12 +31,43 @@ const users = require("./models/users")();
 
 const app = (module.exports = express());
 
-app.use('/', express.static('static'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.set('view engine', 'ejs');
+
+app.get('/users', (req, res) => {
+  const db = client.db(DB_NAME);
+  const collection = db.collection('users');
+  // Find some documents
+  collection.find({}).toArray(function (err, users) {
+    assert.equal(err, null);
+    res.render('users', { 'users': users })
+  });
+})
+
+
+
+// Use connect method to connect to the Server
+client.connect(function (err) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+
+  const db = client.db(DB_NAME);
+});
+
+
+
+
+app.get('/', (req, res) => {
+  res.render('index')
+})
 
 app.use((req, res, next) => {
   console.log("[%s] %s -- %s", new Date(), req.method, req.url);
   next();
 });
+
 
 // app.use(async (req, res, next) => {
 //   const FailedAuthMessage = {
@@ -61,8 +109,7 @@ app.use((req, res, next) => {
 //   next();
 // });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+
 
 // P R O J E C T S //
 
