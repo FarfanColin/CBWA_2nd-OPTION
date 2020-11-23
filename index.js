@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require('path');
 
 const hostname = "0.0.0.0";
 const port = process.env.PORT || 3000;
@@ -20,6 +21,9 @@ const users = require("./models/users")();
 
 const app = (module.exports = express());
 
+app.use(express.static('./public/img'));
+app.use(express.static('./public/css'));
+app.use(express.static('./public/js'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
