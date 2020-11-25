@@ -48,7 +48,7 @@ post a new issue on the web page and later on the admin itself or an user will g
 comments section and once the problem is solved or it doesnt have anything else to add, it will be
 closed by the admin.
 
-## A changelog
+## Changelog
 
 commit 36bddd5491ad4e1808a017e9bbe9d626bf844c3b (HEAD -> 2nd_part)
 Author: FarfanColin <cjfc12345@hotmail.com>
@@ -356,10 +356,10 @@ Date:   Thu Oct 8 17:22:40 2020 +0100
 
     first
 
-## A roadmap
+## Roadmap
 Interface User-Database
 
-##Author
+## Author
 My name is Christian Jesus Farfan Colin, I am originally from Mexico nowadays I am studying a higher
 diploma in Science in Computing at College of Computing and Technology (CCT), place where I was able
 to sharp my skills as developer, altough I am aware that I need to learn to much more, reason why
