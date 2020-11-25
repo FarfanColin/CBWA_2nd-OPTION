@@ -27,7 +27,7 @@ The final page is the users one, as the name specifies every person who is inter
 web page will be listed on this side, dont matter the usertype.
 
 ## Set it up
-First step, provide valid data to connect to our MongoDB, it means our credentials from MongoDB Atlas,
+> First step, provide valid data to connect to our MongoDB, it means our credentials from MongoDB Atlas,
 once this is done, our database mentioned in our JavaScript will be ready to push and pull data.
 Second step is running our code, to perform this step, it will be neccessary to do it by "npm start",
 once this step is done, we just need to wait to get the "Server connected succesfully" message to 
@@ -43,7 +43,7 @@ open the browser with the port indicated and we are ready to go.
 * React Native
 
 ## Example usage
-As an example, in the web page we have a project with the name "Bug Tracker", this plan allows us
+> As an example, in the web page we have a project with the name "Bug Tracker", this plan allows us
 to solve a problem we are facing, so every time that the user is having issues of any matter, just
 post a new issue on the web page and later on the admin itself or an user will give support on the 
 comments section and once the problem is solved or it doesnt have anything else to add, it will be
@@ -358,10 +358,10 @@ Date:   Thu Oct 8 17:22:40 2020 +0100
     first
 
 ## Roadmap
-Interface User-Database
+> Interface User-Database
 
 ## Author
-My name is Christian Jesus Farfan Colin, I am originally from Mexico nowadays I am studying a higher
+> My name is Christian Jesus Farfan Colin, I am originally from Mexico nowadays I am studying a higher
 diploma in Science in Computing at College of Computing and Technology (CCT), place where I was able
 to sharp my skills as developer, altough I am aware that I need to learn to much more, reason why
 I would like to make a master on the coming years.
