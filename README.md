@@ -1,4 +1,5 @@
 # FINAL CA
+> Through the following lines, we are going to review my project.
 
 ## Table of contents
 * [Functionality](#Functionality)
@@ -10,7 +11,7 @@
 * [Author](#Author)
 
 ## Functionality
-Basically my project is based on a front-end web page, where it is possible to find the solution
+> Basically my project is based on a front-end web page, where it is possible to find the solution
 to the different bugs we have to deal with by getting the advice from users or even de admin.
 At the home page, we could see a simple welcome message, following by the developer's name and the
 link to the repository in GitHub, in case it is necessary to check the code. At the top of the home
