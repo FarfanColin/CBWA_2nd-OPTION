@@ -2,14 +2,14 @@
 
 ## Table of contents
 * [Functionality](#Functionality)
-*Set it up
-*Technologies used
-*Example usage
-*Changelog
-*Roadmap
-*Author
+* [Set it up](#Set-it-up)
+* [Technologies used](#technologies-used)
+* [Example usage](#Example-usage)
+* [Changelog](#Changelog)
+* [Roadmap](#Roadmap)
+* [Author](#Author)
 
-Functionality
+## Functionality
 Basically my project is based on a front-end web page, where it is possible to find the solution
 to the different bugs we have to deal with by getting the advice from users or even de admin.
 At the home page, we could see a simple welcome message, following by the developer's name and the
@@ -24,27 +24,31 @@ The next stage is based on the projects page, it is possible to add as many proj
 so if there is any issue according to the posts made, it will be easier to solve a trouble.
 The final page is the users one, as the name specifies every person who is interacting with the
 web page will be listed on this side, dont matter the usertype.
-------Set it up
+
+## Set it up
 First step, provide valid data to connect to our MongoDB, it means our credentials from MongoDB Atlas,
 once this is done, our database mentioned in our JavaScript will be ready to push and pull data.
 Second step is running our code, to perform this step, it will be neccessary to do it by "npm start",
 once this step is done, we just need to wait to get the "Server connected succesfully" message to 
 open the browser with the port indicated and we are ready to go.
-------Technologies used
-*MongoDB Atlas
-*Robo 3T
-*JavaScript
-*EJS
-*CSS
-*Visual Studio Code
-*React Native
-------Example usage
+
+## Technologies used
+* MongoDB Atlas
+* Robo 3T
+* JavaScript
+* EJS
+* CSS
+* Visual Studio Code
+* React Native
+
+## Example usage
 As an example, in the web page we have a project with the name "Bug Tracker", this plan allows us
 to solve a problem we are facing, so every time that the user is having issues of any matter, just
 post a new issue on the web page and later on the admin itself or an user will give support on the 
 comments section and once the problem is solved or it doesnt have anything else to add, it will be
 closed by the admin.
-------A changelog
+
+## A changelog
 
 commit 36bddd5491ad4e1808a017e9bbe9d626bf844c3b (HEAD -> 2nd_part)
 Author: FarfanColin <cjfc12345@hotmail.com>
@@ -351,9 +355,11 @@ Author: FarfanColin <cjfc12345@hotmail.com>
 Date:   Thu Oct 8 17:22:40 2020 +0100
 
     first
-------A roadmap
+
+## A roadmap
 Interface User-Database
-------Author
+
+##Author
 My name is Christian Jesus Farfan Colin, I am originally from Mexico nowadays I am studying a higher
 diploma in Science in Computing at College of Computing and Technology (CCT), place where I was able
 to sharp my skills as developer, altough I am aware that I need to learn to much more, reason why
